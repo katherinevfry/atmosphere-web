@@ -1,27 +1,13 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'shop',
+  title: 'Shop',
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Name',
       type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
     },
     {
       name: 'mainImage',
@@ -38,6 +24,16 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
+      title: 'address',
+      name: 'Address',
+      type: 'text'
+    },
+    {
+      title: 'website',
+      name: 'Website',
+      type: 'url'
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
@@ -51,15 +47,8 @@ export default {
 
   preview: {
     select: {
-      title: 'title',
-      author: 'author.name',
+      title: 'name',
       media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
-      })
     },
   },
 }
