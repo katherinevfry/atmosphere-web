@@ -1,24 +1,36 @@
 import groq from "groq";
+import Hero from "../components/Hero";
 import client from "../lib/sanity";
-import styles from '../styles/Home.module.css'
+import imageUrlBuilder from "@sanity/image-url";
+
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source).toString();
+}
 
 export default function Home(props) {
-  console.log(props)
+ const { hero } = props;
   return (
-    <div className={styles.container}>
-     <h1>Atmosphere</h1>
-    </div>
+    <>
+     <Hero imageSource={urlFor(hero.mainImage)}/>
+     <div className="flex flex-row items-center">
+     <div className="flex space-y-1 ml-10 my-10 flex-col leading-[50px] align-top body-text text-[60px] text-green ">
+      <p>Find Your</p>
+      <p>Atmosphere.</p>
+     </div>
+     <div className=" border-t-4 border-green w-full mr-10"/>
+     </div>
+     </>
   )
 }
 
-const query = groq`*[_type == "post"] | order(date desc, _createdAt desc)`;
+const query = groq`*[_type == "hero"][0]`;
 
 export async function getStaticProps() {
-  const allPosts = await client.fetch(query);
+  const hero = await client.fetch(query);
 
   return {
     props: {
-      allPosts,
+      hero,
     },
   };
 }
