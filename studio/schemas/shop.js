@@ -25,12 +25,12 @@ export default {
     },
     {
       title: 'address',
-      name: 'Address',
+      name: 'address',
       type: 'text'
     },
     {
       title: 'website',
-      name: 'Website',
+      name: 'website',
       type: 'url'
     },
     {
