@@ -5,7 +5,7 @@ export default function Card({name, categories, mainImage, address, website}) {
         window.location = website;
     }
     return(
-        <div className="flex flex-col w-full md:w-[45%] my-4 md:my-10 md:mx-10">
+        <div className="flex flex-col w-full md:w-[500px] my-4 md:my-10 md:mx-10">
         <div className="flex flex-col md:flex-row md:items-center">
           <p className="body-text text-green text-[30px] w-[120px] leading-[30px] pr-10">
             {name}.
