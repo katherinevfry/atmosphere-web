@@ -5,6 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { Button } from "../components/Button";
 import Image from "next/image";
 import Card from "../components/Card";
+import { useRouter } from "next/router";
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source).toString();
@@ -12,7 +13,7 @@ function urlFor(source) {
 
 export default function Home(props) {
   const { hero, categories, shops } = props;
-  console.log(shops);
+  const router = useRouter();
   return (
     <div className="mx-10">
       <Hero imageSource={urlFor(hero.mainImage)} />
@@ -25,11 +26,11 @@ export default function Home(props) {
       </div>
       <div className="my-2 flex flex-row flex-wrap justify-start">
         {categories.map((category) => (
-          <Button key={category.title} label={category.title} />
+          <Button key={category.title} label={category.title} onClick={() => router.push(`/category/${category.slug.current}`)} />
         ))}
       </div>
       <div className="border-t-4 border-green w-full my-5" />
-      <div className="flex flex-col md:flex-row md:space-between">
+      <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2">
         {shops.map((shop) => (
           <Card key={shop.title} name={shop.name} categories={shop.categories} mainImage={urlFor(shop.mainImage)} address={shop.address} website={shop.website} />
         ))}
@@ -47,6 +48,7 @@ const shopsQuery = groq`*[_type == "shop"]{
   website,
   name
 }`;
+
 
 export async function getStaticProps() {
   const hero = await client.fetch(heroQuery);
