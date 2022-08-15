@@ -15,6 +15,7 @@ export default function CategoryPage(props) {
   const { hero, currentCat, shops, categories } = props;
   const router = useRouter();
   return (
+
     <div className="mx-10">
       <Hero imageSource={urlFor(hero.mainImage)} />
       <div className="flex flex-col md:flex-row md:items-center">
@@ -35,7 +36,10 @@ export default function CategoryPage(props) {
         ))}
       </div>
       <div className="border-t-4 border-green w-full my-5" />
-      <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2">
+      {shops.length === 0 ?
+        (<p className="body-text text-[20px] md:text-[40px] text-green mb-4">Nothing to see here... yet.</p>)
+    : (
+        <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2">
         {shops.map((shop) => (
           <Card
             key={shop.title}
@@ -47,6 +51,7 @@ export default function CategoryPage(props) {
           />
         ))}
       </div>
+    )}
     </div>
   );
 }
