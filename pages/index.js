@@ -17,8 +17,8 @@ export default function Home(props) {
   return (
     <div className="mx-10">
       <Hero imageSource={urlFor(hero.mainImage)} />
-      <div className="flex flex-col md:flex-row md:items-center">
-        <div className="flex space-y-1 my-8 flex-col leading-[30px] md:leading-[50px] align-top body-text text-[40px] md:text-[60px] text-green">
+      <div className="flex flex-col lg:flex-row lg:items-center">
+        <div className="flex space-y-1 my-8 flex-col leading-[30px] lg:leading-[50px] align-top body-text text-[40px] lg:text-[60px] text-green">
           <p>Find Your</p>
           <p>Atmosphere.</p>
         </div>
@@ -30,7 +30,7 @@ export default function Home(props) {
         ))}
       </div>
       <div className="border-t-4 border-green w-full my-5" />
-      <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2">
+      <div className="grid grid-cols-1 grid-flow-row lg:grid-cols-2">
         {shops.map((shop) => (
           <Card key={shop.title} name={shop.name} categories={shop.categories} mainImage={urlFor(shop.mainImage)} address={shop.address} website={shop.website} />
         ))}
