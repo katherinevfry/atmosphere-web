@@ -2,8 +2,11 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
 
+declare interface LayoutProps {
+  children?: React.ReactNode,
+}
 
-const Layout = ({ children }) => (
+const Layout = ({ children }: LayoutProps) => (
   <>
     <Head>
       <meta name="description" content="atmosphere" />

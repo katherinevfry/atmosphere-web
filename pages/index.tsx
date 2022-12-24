@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import client from "../lib/sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { Button } from "../components/Button";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Card from "../components/Card";
 import { useRouter } from "next/router";
@@ -50,7 +51,7 @@ const shopsQuery = groq`*[_type == "shop"]{
 }`;
 
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const hero = await client.fetch(heroQuery);
   const categories = await client.fetch(categoryQuery);
   const shops = await client.fetch(shopsQuery);
