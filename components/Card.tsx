@@ -1,6 +1,16 @@
 import Image from "next/image"
 
-export default function Card({name, categories, mainImage, address, website}) {
+type CardProps = {
+  name: string,
+  categories: {
+    title: string
+  }[],
+  mainImage: string,
+  address: string,
+  website: string,
+}
+
+export default function Card({name, categories, mainImage, address, website}: CardProps) {
     const handleClick = (website) => {
         window.location = website;
     }

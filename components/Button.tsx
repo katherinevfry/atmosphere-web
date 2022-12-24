@@ -1,4 +1,12 @@
-export function Button({ label, type = "button", onClick, activeCat }) {
+type ButtonProps = {
+  label: string,
+  type?: "button" | "submit" | "reset",
+  onClick: () => void,
+  activeCat?: boolean, 
+};
+
+
+export function Button({ label, type = "button", onClick, activeCat }: ButtonProps) {
   return (
     <button
       onClick={onClick}
