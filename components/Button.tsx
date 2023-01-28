@@ -11,7 +11,7 @@ export function Button({ label, type = "button", onClick, activeCat }: ButtonPro
     <button
       onClick={onClick}
       type={type}
-      className={`bg-pink hover:scale-110 inline-flex items-center justify-center py-2 px-3 
+      className={`bg-pink inline-flex hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-2 items-center justify-center py-2 px-3 
         rounded-3xl text-green body-text m-1 ${activeCat ? "border-2 border-green" : null}`}
         disabled={activeCat}
     >

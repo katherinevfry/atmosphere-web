@@ -15,17 +15,20 @@ export default function Card({name, categories, mainImage, address, website}: Ca
         window.location = website;
     }
     return(
-        <div className="flex flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-10 lg:mx-10">
+        <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
         <div className="flex flex-col lg:flex-row lg:items-center">
-          <p className="body-text mb-2 text-green text-[30px] w-[120px] leading-[30px] pr-12">
+          <p className="body-text mb-2 text-green text-[30px] w-[300px] leading-[30px] pr-12">
             {name}.
           </p>
-          <div className="border-t-2 border-green w-full my-5" />
         </div>
-        <div className="flex flex-col lg:flex-row lg:space-x-4">
-          <div className="flex flex-col lg:w-[65%] my-4 lg:self-end">
-            <div className="hidden lg:block border-t-2 border-green w-full my-5" />
-            <p className="body-text text-green text-[24px] leading-[20px] justify-start">
+        <div className="flex justify-center align-center flex-col lg:flex-row lg:space-x-4">
+          <div className="flex flex-col space-y-3 align-center justify-center order-first lg:order-none">
+                <Image className="rounded-lg" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
+                <p className="body-text text-green text-[14px]">{address}</p>
+                <button onClick={() => {handleClick(website)}} className="border-2 border-green rounded-3xl py-1 px-3 body-text hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-2 text-green">Learn More.</button>
+          </div>
+          <div className="flex flex-col lg:w-[65%] my-4">
+            <p className="body-text pt-2 text-green text-[24px] leading-[20px] justify-center">
               Good for...
             </p>
             <div className="my-2 flex flex-row flex-wrap justify-start">
@@ -33,12 +36,6 @@ export default function Card({name, categories, mainImage, address, website}: Ca
                 <div key={category.title} className="bg-pink inline-flex items-center justify-center py-1 px-2 rounded-2xl text-green body-text text-[14px] m-1">{category.title}</div>
               ))}
             </div>
-          </div>
-          <div className="border-r-2 border-green h-full mx-4" />
-          <div className="flex flex-col space-y-3 align-center order-first lg:order-none">
-                <Image className="rounded-lg" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
-                <p className="body-text text-green text-[14px]">{address}</p>
-                <button onClick={() => {handleClick(website)}} className="outline outline-2 outline-green rounded-3xl py-1 px-3 body-text hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-2 text-green">Learn More.</button>
           </div>
         </div>
         <div className="flex flex-row justify-center lg:hidden">
