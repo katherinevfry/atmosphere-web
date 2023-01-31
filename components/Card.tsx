@@ -33,7 +33,7 @@ export default function Card({name, categories, mainImage, address, website}: Ca
             </p>
             <div className="my-2 flex flex-row flex-wrap justify-start">
               {categories.map((category) => (
-                <div key={category.title} className="bg-pink inline-flex items-center justify-center py-1 px-2 rounded-2xl text-green body-text text-[14px] m-1">{category.title}</div>
+                <div key={category.title} className="bg-pink inline-flex items-center justify-center py-1 px-2 rounded-2xl text-green body-text text-[14px] m-1">{category.title || category}</div>
               ))}
             </div>
           </div>
