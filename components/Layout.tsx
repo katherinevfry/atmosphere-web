@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import Head from "next/head";
 import Navigation from "./Navigation";
+// import Footer from './Footer';
 
 declare interface LayoutProps {
   children?: React.ReactNode,
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => (
       <h1 className="sr-only">Atmosphere</h1>
       {children}
     </main>
+    {/* <Footer /> */}
   </>
 );
 

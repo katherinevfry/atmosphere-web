@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/test-ui.jsx"  ],
+, "components/Footer.jsx", "pages/test-ui.jsx"  ],
   "exclude": [
     "node_modules"
   ]

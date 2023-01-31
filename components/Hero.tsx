@@ -6,7 +6,7 @@ type HeroProps = {
 
 function Hero({ imageSource }: HeroProps) {
   return (
-    <div className="h-[14rem] md:h-[20rem] relative">
+    <div className="h-[12rem] md:h-[20rem] relative">
       <Image src={imageSource} alt="coffee" layout="fill" objectFit="cover" />
     </div>
   );
