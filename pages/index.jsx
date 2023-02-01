@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import Card from "../components/Card";
 import { AnimatePresence, motion } from "framer-motion";
+import { useStep } from "../components/StepContext";
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source).toString();
@@ -82,6 +83,14 @@ const ChooseCats = ({
 const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
   const [filteredShops, setFilteredShops] = useState([]);
 
+  const handleCategoryClick = (selected) => {
+    setSelectedCats(selected);
+      window.scrollTo({
+        top: 0, 
+        behavior: 'smooth'
+      });
+  }
+
   useEffect(() => {
     const getFilteredShops = (shopCats, selected) =>
     selected.every((s) => shopCats.includes(s));
@@ -124,7 +133,7 @@ const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
               mainImage={urlFor(shop.mainImage)}
               address={shop.address}
               website={shop.website}
-              handleCategoryClick={setSelectedCats}
+              handleCategoryClick={handleCategoryClick}
             />
           ))}
         </div>
@@ -141,7 +150,7 @@ const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
 };
 
 export default function TestUI(props) {
-  const [step, setStep] = useState(0);
+  const {step, setStep} = useStep();
   const [selectedCats, setSelectedCats] = useState([]);
   const { categories, hero, shops } = props;
   const reset = () => {
