@@ -15,7 +15,7 @@ export function Button({ label, type = "button", onClick, activeCat, disabled, s
       <button
       onClick={onClick}
       type={type}
-      className={`outline outline-2 outline-green rounded-3xl py-1 px-3 body-text hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-2 text-green ${disabled ? "hover:no-underline cursor-not-allowed" : null}`}
+      className={`border-2 border-green rounded-3xl py-1 px-3 body-text hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-3 text-green ${disabled ? "hover:no-underline cursor-not-allowed" : null}`}
         disabled={disabled}
     >
       {label}

@@ -1,19 +1,22 @@
 import Image from "next/image"
+import { Button } from "./Button";
 
 type CardProps = {
   name: string,
   categories: {
     title: string
-  }[],
+  }[] | string[],
   mainImage: string,
   address: string,
   website: string,
-}
+  handleCategoryClick?: (arg0: string[]) => void,
+};
 
-export default function Card({name, categories, mainImage, address, website}: CardProps) {
+export default function Card({name, categories, mainImage, address, website, handleCategoryClick}: CardProps) {
     const handleClick = (website) => {
         window.location = website;
     }
+
     return(
         <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
         <div className="flex flex-col lg:flex-row lg:items-center">
@@ -33,7 +36,7 @@ export default function Card({name, categories, mainImage, address, website}: Ca
             </p>
             <div className="my-2 flex flex-row flex-wrap justify-start">
               {categories.map((category) => (
-                <div key={category.title} className="bg-pink inline-flex items-center justify-center py-1 px-2 rounded-2xl text-green body-text text-[14px] m-1">{category.title || category}</div>
+                <Button key={category.title || category} label={category.title || category} onClick={() => handleCategoryClick([category.title || category])} />
               ))}
             </div>
           </div>
