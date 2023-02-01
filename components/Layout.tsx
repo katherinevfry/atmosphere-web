@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => (
       <meta name="description" content="atmosphere" />
       <meta property="og:title" content="atmosphere" />
       <meta property="og:image" content="https://atmosphere-web.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F9h4vha0j%2Fproduction%2Fe6c9f628b8da86c82844e77f799f61c89a416e47-6000x4000.png&w=1200&q=75" />
-      <meta property="og:url" content="https://atmosphere-web.vercel.app" />
+      <meta property="og:url" content="https://atmosphere-nash.com/" />
       <meta property="og:type" content="website" />
       <link rel="icon" type="image/x-icon" href="https://i.imgur.com/BFCKEJ3.png"/>
     </Head>
