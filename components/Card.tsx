@@ -13,8 +13,14 @@ type CardProps = {
 };
 
 export default function Card({name, categories, mainImage, address, website, handleCategoryClick}: CardProps) {
-    const handleClick = (website) => {
-        window.location = website;
+    const handleClick = () => {
+        window.open(website, '_blank')
+    }
+
+    const handleAddressClick = () => {
+      const queryString = address.split(' ').join('+');
+      const site = `https://www.google.com/maps/place/${queryString}`;
+      window.open(site, '_blank')
     }
 
     return(
@@ -27,8 +33,8 @@ export default function Card({name, categories, mainImage, address, website, han
         <div className="flex justify-center align-center flex-col lg:flex-row lg:space-x-4">
           <div className="flex flex-col space-y-3 align-center justify-center order-first lg:order-none">
                 <Image className="rounded-lg" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
-                <p className="body-text text-green text-[14px]">{address}</p>
-                <button onClick={() => {handleClick(website)}} className="border-2 border-green rounded-3xl py-1 px-3 body-text hover:underline hover:decoration-wavy hover:decoration-green hover:underline-offset-2 text-green">Learn More.</button>
+                <Button label="Take Me There." onClick={() => handleAddressClick()} style="outline"/>
+                <Button label="Learn More." onClick={() => {handleClick()}} style="outline"/>
           </div>
           <div className="flex flex-col lg:w-[65%] my-4">
             <p className="body-text pt-2 text-green text-[24px] leading-[20px] justify-center">
