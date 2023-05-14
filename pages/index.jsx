@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import Card from "../components/Card";
 import { AnimatePresence, motion } from "framer-motion";
-import { useStep } from "../components/StepContext";
+import { useFlow } from "../components/FlowContext";
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source).toString();
 }
 
-const StartHere = ({ goToNext, hero }) => (
+const StartHere = ({ hero }) => {
+  const {setStep} = useFlow();
+  return (
   <>
     <Hero imageSource={urlFor(hero.mainImage)} />
     <div className="mx-4 lg:mx-10">
@@ -27,18 +29,18 @@ const StartHere = ({ goToNext, hero }) => (
       <Button
         label="Okay let's do this"
         style="outline"
-        onClick={() => goToNext(1)}
+        onClick={() => setStep(1)}
       />
     </div>
   </>
-);
+)};
 
 const ChooseCats = ({
-  goToNext,
   categories,
   setSelectedCats,
   selectedCats,
 }) => {
+  const {setStep} = useFlow();
   const handleCatClick = (category) => {
     if (selectedCats.includes(category)) {
       setSelectedCats(selectedCats.filter((cat) => cat !== category));
@@ -73,7 +75,7 @@ const ChooseCats = ({
           label="See what happens"
           style="outline"
           disabled={selectedCats.length < 1}
-          onClick={() => goToNext(2)}
+          onClick={() => setStep(2)}
         />
       </div>
     </div>
@@ -124,7 +126,7 @@ const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
           doesn&apos;t even exist. Stop being so picky.
         </p>
       ) : (
-        <div className="flex  mx-4 lg:mx-10 flex-col flex-wrap lg:flex-row">
+        <div className="flex mx-4 lg:mx-10 flex-col flex-wrap lg:flex-row align-center justify-center">
           {filteredShops.map((shop) => (
             <Card
               key={shop.name}
@@ -138,7 +140,7 @@ const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
           ))}
         </div>
       )}
-      <div className="mt-6 lg:mt-10 mx-4 lg:mx-10">
+      <div className="mt-6 lg:mt-10 flex mx-4 lg:mx-10">
         <Button
           label="Let's try that again"
           style="outline"
@@ -150,12 +152,11 @@ const ShowShops = ({ selectedCats, setSelectedCats, shops, reset }) => {
 };
 
 export default function TestUI(props) {
-  const {step, setStep} = useStep();
-  const [selectedCats, setSelectedCats] = useState([]);
+  const {step, setStep, selectedCategories, setSelectedCategories} = useFlow();
   const { categories, hero, shops } = props;
   const reset = () => {
     setStep(1);
-    setSelectedCats([]);
+    setSelectedCategories([]);
   };
   return (
     <AnimatePresence mode="wait">
@@ -166,17 +167,16 @@ export default function TestUI(props) {
         animate={{ y: 0, opacity: 1, }}
         exit={{ y: -300, opacity: 0 }}
       >
-        {step === 0 ? <StartHere goToNext={setStep} hero={hero} /> : null}
+        {step === 0 ? <StartHere hero={hero} /> : null}
         {step === 1 ? (
           <ChooseCats
-            goToNext={setStep}
-            selectedCats={selectedCats}
-            setSelectedCats={setSelectedCats}
+            selectedCats={selectedCategories}
+            setSelectedCats={setSelectedCategories}
             categories={categories}
           />
         ) : null}
         {step === 2 ? (
-          <ShowShops selectedCats={selectedCats} setSelectedCats={setSelectedCats} shops={shops} reset={reset} />
+          <ShowShops selectedCats={selectedCategories} setSelectedCats={setSelectedCategories} shops={shops} reset={reset} />
         ) : null}
       </motion.div>
     </AnimatePresence>

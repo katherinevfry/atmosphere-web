@@ -25,7 +25,7 @@ export function Button({ label, type = "button", onClick, activeCat, disabled, s
       onClick={onClick}
       type={type}
       className={`bg-pink inline-flex items-center justify-center py-2 px-3 
-        rounded-3xl text-green body-text m-1 ${activeCat ? "border-2 border-green" : null} ${disabled ? "cursor-not-allowed" : null}`}
+        rounded-3xl text-green body-text m-1 border-2 ${activeCat ?  "border-green" : "border-pink"} ${disabled ? "cursor-not-allowed" : null}`}
         disabled={disabled}
     >
       {label}

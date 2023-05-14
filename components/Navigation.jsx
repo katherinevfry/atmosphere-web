@@ -1,10 +1,14 @@
-import { useStep } from "./StepContext";
+import { useFlow } from "./FlowContext";
 
 function Navigation() {
-    const {setStep} = useStep();
+    const {setStep, setSelectedCategories} = useFlow();
+    const resetPage = () => {
+        setStep(0);
+        setSelectedCategories([]);
+    }
     return (
         <div className="h-[60px] bg-green flex flex-row justify-center">
-            <button type="button" onClick={() => setStep(0)} className="text-pink cursor-pointer hover:scale-110 text-center body-text text-[36px]">Atmosphere</button>
+            <button type="button" onClick={resetPage} className="text-pink cursor-pointer hover:scale-110 text-center body-text text-[36px]">Atmosphere</button>
         </div>
     )
 }
