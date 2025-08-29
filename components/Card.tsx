@@ -25,14 +25,14 @@ export default function Card({name, categories, mainImage, address, website, han
 
     return(
         <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
-        <div className="flex flex-col lg:flex-row lg:items-center">
+        <div className="flex flex-col lg:flex-row">
           <p className="body-text mb-2 text-green text-[30px] w-[300px] leading-[30px] pr-12">
             {name}.
           </p>
         </div>
-        <div className="flex justify-center align-center flex-col lg:flex-row lg:space-x-4">
+        <div className="flex justify-center align-center flex-col lg:space-x-4">
           <div className="flex flex-col space-y-3 align-center justify-center order-first lg:order-none">
-                <Image className="rounded-lg" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
+                <Image className="rounded-lg aspect-[4/3]" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
                 <Button label="Take Me There." onClick={() => handleAddressClick()} style="outline"/>
                 <Button label="Learn More." onClick={() => {handleClick()}} style="outline"/>
           </div>
