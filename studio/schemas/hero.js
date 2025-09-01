@@ -1,22 +1,23 @@
-/* eslint-disable import/no-anonymous-default-export */
-export default {
+import {defineType, defineField} from 'sanity';
+
+export default defineType({
     name: 'hero',
     title: 'Hero',
     type: 'document',
     fields: [
-      {
+      defineField({
         name: 'name',
         title: 'Name',
         type: 'string',
-      },
-      {
+      }),
+      defineField({
         name: 'mainImage',
         title: 'Main image',
         type: 'image',
         options: {
           hotspot: true,
         },
-      },
+      }),
     ],
   
     preview: {
@@ -25,5 +26,5 @@ export default {
         media: 'mainImage',
       },
     },
-  }
+  });
   
