@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
   images: {
-    domains: ["cdn.sanity.io"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',          // optional, leave empty
+        pathname: '/images/**', // allow all paths under /images/
+      },
+    ],
   },
-
 }
 // const STUDIO_REWRITE = {
 //   source: "/studio/:path*",

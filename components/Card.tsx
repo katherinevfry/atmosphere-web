@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { Button } from "./Button";
 
 type CardProps = {
@@ -23,8 +23,8 @@ export default function Card({name, categories, mainImage, address, website, han
       window.open(site, '_blank')
     }
 
-    return(
-        <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
+    return (
+      <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
         <div className="flex flex-col lg:flex-row lg:items-center">
           <p className="body-text mb-2 text-green text-[30px] w-[300px] leading-[30px] pr-12">
             {name}.
@@ -32,7 +32,17 @@ export default function Card({name, categories, mainImage, address, website, han
         </div>
         <div className="flex justify-center align-center flex-col lg:flex-row lg:space-x-4">
           <div className="flex flex-col space-y-3 align-center justify-center order-first lg:order-none">
-                <Image className="rounded-lg" src={mainImage} alt="coffee" height={200} width={300} objectFit="cover"/>
+                <Image
+                  className="rounded-lg"
+                  src={mainImage}
+                  alt="coffee"
+                  height={200}
+                  width={300}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    objectFit: "cover"
+                  }} />
                 <Button label="Take Me There." onClick={() => handleAddressClick()} style="outline"/>
                 <Button label="Learn More." onClick={() => {handleClick()}} style="outline"/>
           </div>
@@ -53,5 +63,5 @@ export default function Card({name, categories, mainImage, address, website, han
         <svg className="w-6 h-6 stroke-pink" fill="none"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
         </div>
       </div>
-    )
+    );
 }

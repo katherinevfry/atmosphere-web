@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 type HeroProps = {
   imageSource: string
@@ -7,7 +7,14 @@ type HeroProps = {
 function Hero({ imageSource }: HeroProps) {
   return (
     <div className="h-[12rem] md:h-[20rem] relative">
-      <Image src={imageSource} alt="coffee" layout="fill" objectFit="cover" />
+      <Image
+        src={imageSource}
+        alt="coffee"
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover"
+        }} />
     </div>
   );
 }
