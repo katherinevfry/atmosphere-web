@@ -23,14 +23,14 @@ export default function Card({name, categories, mainImage, address, website, han
       window.open(site, '_blank')
     }
 
-    return (
-      <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
-        <div className="flex flex-col lg:flex-row lg:items-center">
+    return(
+        <div className="flex p-4 rounded-3xl border-2 border-green flex-col w-full lg:w-[460px] xl:w-[500px] my-4 lg:my-6 lg:mx-10">
+        <div className="flex flex-col lg:flex-row">
           <p className="body-text mb-2 text-green text-[30px] w-[300px] leading-[30px] pr-12">
             {name}.
           </p>
         </div>
-        <div className="flex justify-center align-center flex-col lg:flex-row lg:space-x-4">
+        <div className="flex justify-center align-center flex-col lg:space-x-4">
           <div className="flex flex-col space-y-3 align-center justify-center order-first lg:order-none">
                 <Image
                   className="rounded-lg"
