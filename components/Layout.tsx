@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import Head from "next/head";
 import Navigation from "./Navigation";
-// import Footer from './Footer';
+import Footer from './Footer';
 
 declare interface LayoutProps {
   children?: React.ReactNode;
@@ -17,12 +17,14 @@ const Layout = ({ children }: LayoutProps) => (
       <meta property="og:type" content="website" />
       <link rel="icon" type="image/x-icon" href="https://i.imgur.com/BFCKEJ3.png"/>
     </Head>
-    <Navigation />
-    <main role="main" className="bg-cream main">
-      <h1 className="sr-only">Atmosphere</h1>
-      {children}
-    </main>
-    {/* <Footer /> */}
+    <div className="flex flex-col min-h-screen">
+      <Navigation />
+      <main role="main" className="bg-cream main">
+        <h1 className="sr-only">Atmosphere</h1>
+        {children}
+      </main>
+      <Footer />
+    </div>
   </>
 );
 
