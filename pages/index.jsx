@@ -162,7 +162,6 @@ export default function TestUI(props) {
     <AnimatePresence mode="wait">
       <motion.div
         key={step}
-        className="mb-10"
         initial={{ y: -300, opacity: 0 }}
         animate={{ y: 0, opacity: 1, }}
         exit={{ y: -300, opacity: 0 }}

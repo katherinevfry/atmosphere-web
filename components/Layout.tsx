@@ -10,8 +10,9 @@ declare interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => (
   <>
     <Head>
-      <meta name="description" content="atmosphere" />
-      <meta property="og:title" content="atmosphere" />
+      <meta name="description" content="find the perfect coffee shop in nashville based on whatever vibe you're looking for." />
+      <meta name="theme-color" content="#0e7c4e"></meta>
+      <meta property="og:title" content="atmosphere nash" />
       <meta property="og:image" content="https://atmosphere-web.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F9h4vha0j%2Fproduction%2Fe6c9f628b8da86c82844e77f799f61c89a416e47-6000x4000.png&w=1200&q=75" />
       <meta property="og:url" content="https://atmosphere-nash.com/" />
       <meta property="og:type" content="website" />

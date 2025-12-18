@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #FFF9ED;
+  background-color: #0e7c4e;
 }
 
 * {
@@ -13,6 +13,7 @@ body {
 
 .main {
   flex: 1;
+  padding-bottom: 40px;
 }
 
 .body-text {
