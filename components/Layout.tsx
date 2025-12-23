@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
 import Footer from './Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 declare interface LayoutProps {
   children?: React.ReactNode;
@@ -23,6 +24,7 @@ const Layout = ({ children }: LayoutProps) => (
       <main role="main" className="bg-cream main">
         <h1 className="sr-only">Atmosphere</h1>
         {children}
+        <Analytics />
       </main>
       <Footer />
     </div>
